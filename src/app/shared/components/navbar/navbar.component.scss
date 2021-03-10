@@ -1,0 +1,10 @@
+@import '~src/assets/scss/mixins';
+
+.navbar {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  min-height: 60px;
+  @include min-width-992 {
+    padding: 0 20px;
+  }
+}
