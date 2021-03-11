@@ -8,19 +8,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#"><small>REGISTRAR PRODUCTO</small></a>
+        <a class="nav-link" [routerLink]="['crear']" routerLinkActive="active"><small>REGISTRAR PRODUCTO</small></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['buscar']" routerLinkActive="active"><small>PRODUCTOS</small></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <div class="input-group inventory-forms">
-        <input type="text" class="form-control" placeholder="Buscar" aria-label="Recipient's username"
-               aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon2">
-            <i class="fa fa-search"></i>
-          </span>
-        </div>
-      </div>
-    </form>
   </div>
 </nav>

@@ -1,11 +1,14 @@
 @import 'mixins';
+@import 'custom-fonts';
 
 .inventory-forms {
   .form-control {
     border-bottom-left-radius: 15px;
     border-top-left-radius: 15px;
-    border-right: 1px solid #783F8E;
+    border-right: 1px solid $primary-color;
     font-size: 12px;
+    min-height: 36px;
+    height: 36px;
   }
 
   .form-control::placeholder {
@@ -14,9 +17,52 @@
 
   .input-group-append .input-group-text {
     background-color: white;
-    border: 1px solid #783F8E;
+    border: 1px solid $primary-color;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    color: #783F8E;
+    color: $primary-color;
+    min-height: 36px;
+    height: 36px;
+  }
+}
+
+
+.btn-primary-app {
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid $primary-color;
+  font-size: 14px;
+
+  &.active, &:hover {
+    background-color: $primary-dark-color;
+    color: white;
+  }
+}
+
+
+.card {
+  border-radius: 25px;
+  &.filter-panel {
+    width: 100%;
+
+    @include min-width-992 {
+      width: 80%;
+      max-width: 80%;
+    }
+  }
+
+  &.item-card {
+    margin-bottom: 15px;
+    img {
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      height: 200px;
+      width: 100%;
+    }
+
+    .card-body {
+      min-height: 130px;
+      height: 130px;
+    }
   }
 }

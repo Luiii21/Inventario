@@ -6,5 +6,7 @@
   min-height: 60px;
   @include min-width-992 {
     padding: 0 20px;
+    max-width: 1366px;
+    margin: 0 auto;
   }
 }

@@ -1,0 +1,8 @@
+<div class="d-flex flex-column flex-lg-row h-100">
+  <div class="panel filters">
+    <app-data-panel (clothesList)="receivedClothes = $event"></app-data-panel>
+  </div>
+  <div class="panel cards">
+    <app-data-card [clothesReceivedList]="receivedClothes"></app-data-card>
+  </div>
+</div>

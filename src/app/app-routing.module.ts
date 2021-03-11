@@ -1,14 +1,18 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
-import {DataCreateComponent} from './components/data-create/data-create.component';
+import {DataCreateComponent} from './components/data-filter/data-create/data-create.component';
+import {DataFilterComponent} from './components/data-filter/data-filter.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent
   },
   {
-    path: 'create', component: DataCreateComponent
+    path: 'crear', component: DataCreateComponent
+  },
+  {
+    path: 'buscar', component: DataFilterComponent
   },
   {
     path: '**', pathMatch: 'full', redirectTo: ''

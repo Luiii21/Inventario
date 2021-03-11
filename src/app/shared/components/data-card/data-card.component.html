@@ -1,1 +1,28 @@
-<p>data-card works!</p>
+<div class="row mx-0">
+  <div *ngFor="let card of clothesReceivedList" class="col-12 col-lg-4 px-1">
+    <div class="card item-card shadow-sm">
+      <div class="row no-gutters">
+        <div class="col-12">
+          <img src="./assets/img/placeholder-item.jpg" alt="product-img">
+        </div>
+        <div class="col-12">
+          <div class="card-body">
+            <h6 class="card-title text-primary-app mb-2">{{card.trademark | uppercase}}</h6>
+            <h5 class="text-secondary mb-1 text-truncate">{{card.name}}</h5>
+            <h3 class="text-dark-app">{{card.price | currency: 'S/.'}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center"
+     *ngIf="clothesReceivedList.length === 0">
+  <div class="spinner-border text-primary-app load-spinner" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <h4 class="text-primary-app mt-3">Cargando</h4>
+</div>
+
+

@@ -1,28 +1,40 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { DataPanelComponent } from './components/data-panel/data-panel.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { DataCardComponent } from './shared/components/data-card/data-card.component';
-import { DataCreateComponent } from './components/data-create/data-create.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {NavbarComponent} from './shared/components/navbar/navbar.component';
+
+// Components
+import {DataFilterComponent} from './components/data-filter/data-filter.component';
+import {DataCreateComponent} from './components/data-filter/data-create/data-create.component';
+import {DataPanelComponent} from './components/data-filter/data-panel/data-panel.component';
+
+import {HomeComponent} from './components/home/home.component';
+
+// Modules
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {DataCardComponent} from './shared/components/data-card/data-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DataPanelComponent,
     NavbarComponent,
+    DataFilterComponent,
+    DataCreateComponent,
+    DataPanelComponent,
+    HomeComponent,
     DataCardComponent,
-    DataCreateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
