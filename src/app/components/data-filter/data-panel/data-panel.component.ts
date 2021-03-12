@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FilterService} from '../../../services/data/filter.service';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-data-panel',
@@ -35,8 +35,6 @@ export class DataPanelComponent implements OnInit {
       color: [null],
       gender: [null],
       name: [null],
-      price: [null],
-      size: [null],
       type: [null]
     });
   }
@@ -46,16 +44,15 @@ export class DataPanelComponent implements OnInit {
     const newForm = {...this.Form.value};
     for (const i in newForm) {
       if (!newForm[i]) {
+        this.Form.setErrors({vacio: true});
         delete newForm[i];
       }
     }
 
-    if (newForm.value) {
-      this.filterService.filterItems(newForm).subscribe(clothes => {
-        this.Clothes = clothes;
-        this.clothesList.emit({data: clothes, status: 'Loaded'});
-      });
-    }
+    this.filterService.filterItems(newForm).subscribe(clothes => {
+      this.Clothes = clothes;
+      this.clothesList.emit({data: clothes, status: 'Loaded'});
+    });
     this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
   }
 
@@ -80,4 +77,5 @@ export class DataPanelComponent implements OnInit {
       this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
     }
   }
+  // tslint:disable-next-line:typedef
 }
