@@ -14,7 +14,7 @@ import {HomeComponent} from './components/home/home.component';
 
 // Modules
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DataCardComponent} from './shared/components/data-card/data-card.component';
 
 @NgModule({
@@ -27,12 +27,13 @@ import {DataCardComponent} from './shared/components/data-card/data-card.compone
     HomeComponent,
     DataCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

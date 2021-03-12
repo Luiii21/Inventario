@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FilterService {
+  private testObj: any;
 
   constructor(private http: HttpClient) {
   }
@@ -16,23 +17,14 @@ export class FilterService {
     return this.http.get(url);
   }
 
-  filterItems(parameter: string): any[] {
-
-    const filterObj: any[] = [];
-    const term = parameter.toLowerCase();
-
-    this.getItems().subscribe(resp => {
-      const toFilterArray = resp;
-
-      Object.values(toFilterArray).forEach((product: any) => {
-        const name = product.productName.toLowerCase();
-        const type = product.productGender.toLowerCase();
-
-        if (name.indexOf(term) >= 0 || type.indexOf(term) >= 0) {
-          filterObj.push(product);
+  filterItems(parameter: any): Observable<any> {
+    return this.getItems().pipe((map((data: any) => {
+      return data.filter(x => {
+        // tslint:disable-next-line:forin
+        for (const i in parameter) {
+          return x[`${i}`].includes(parameter[i]);
         }
       });
-    }).unsubscribe();
-    return filterObj;
+    })));
   }
 }

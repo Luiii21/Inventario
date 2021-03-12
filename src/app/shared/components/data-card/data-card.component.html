@@ -7,7 +7,9 @@
         </div>
         <div class="col-12">
           <div class="card-body">
-            <h6 class="card-title text-primary-app mb-2">{{card.trademark | uppercase}}</h6>
+            <h6 class="card-title text-primary-app mb-0">{{card.trademark | uppercase}}</h6>
+            <small class="mb-2 text-secondary">COLOR: {{card.color | uppercase}} | {{card.gender | uppercase}}
+              | {{card.type | uppercase}}</small>
             <h5 class="text-secondary mb-1 text-truncate">{{card.name}}</h5>
             <h3 class="text-dark-app">{{card.price | currency: 'S/.'}}</h3>
           </div>
