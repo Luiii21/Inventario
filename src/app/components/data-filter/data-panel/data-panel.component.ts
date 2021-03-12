@@ -10,7 +10,7 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 export class DataPanelComponent implements OnInit {
   @Output() clothesList: EventEmitter<any>;
   Form: FormGroup;
-  sizeControl: any[] = [];
+  Clothes: any[] = [];
 
   constructor(private filterService: FilterService,
               private fb: FormBuilder) {
@@ -23,14 +23,10 @@ export class DataPanelComponent implements OnInit {
   }
 
   getAllClothes(): void {
+    this.clothesList.emit({data: [], status: 'Loading'});
     this.filterService.getItems().subscribe(clothes => {
-      this.clothesList.emit(clothes);
-    });
-  }
-
-  findClothes(term: string): void {
-    this.filterService.filterItems(term).subscribe(data => {
-      this.clothesList.emit(data);
+      this.Clothes = clothes;
+      this.clothesList.emit({data: clothes, status: 'Loaded'});
     });
   }
 
@@ -46,15 +42,38 @@ export class DataPanelComponent implements OnInit {
   }
 
   searchClothes(): void {
+    this.clothesList.emit({data: [], status: 'Loading'});
     const newForm = {...this.Form.value};
     for (const i in newForm) {
       if (!newForm[i]) {
         delete newForm[i];
       }
     }
-    this.filterService.filterItems(newForm).subscribe(data => {
-      this.clothesList.emit([]);
-      this.clothesList.emit(data);
+    this.filterService.filterItems(newForm).subscribe(clothes => {
+      this.Clothes = clothes;
+      this.clothesList.emit({data: clothes, status: 'Loaded'});
     });
+  }
+
+  // tslint:disable-next-line:typedef
+  orderLowerHigher() {
+    if (this.Clothes) {
+      // @ts-ignore
+      this.Clothes.sort((a, b) => {
+        return a.price - b.price;
+      });
+      this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
+    }
+  }
+
+  // tslint:disable-next-line:typedef
+  orderHigherLower() {
+    if (this.Clothes) {
+      // @ts-ignore
+      this.Clothes.sort((a, b) => {
+        return b.price - a.price;
+      });
+      this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
+    }
   }
 }

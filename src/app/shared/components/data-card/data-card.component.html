@@ -1,5 +1,5 @@
 <div class="row mx-0">
-  <div *ngFor="let card of clothesReceivedList" class="col-12 col-lg-4 px-1">
+  <div *ngFor="let card of clothesReceivedList.data" class="col-12 col-lg-4 px-1">
     <div class="card item-card shadow-sm">
       <div class="row no-gutters">
         <div class="col-12">
@@ -20,11 +20,16 @@
 </div>
 
 <div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center"
-     *ngIf="clothesReceivedList.length === 0">
+     *ngIf="clothesReceivedList.status === 'Loading'">
   <div class="spinner-border text-primary-app load-spinner" role="status">
     <span class="sr-only">Loading...</span>
   </div>
   <h4 class="text-primary-app mt-3">Cargando</h4>
 </div>
 
+
+<div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center"
+     *ngIf="!clothesReceivedList.status">
+  <h1 class="text-primary-app mt-3">Lo sentimos no encontramos su producto, Intentelo de nuevo</h1>
+</div>
 
