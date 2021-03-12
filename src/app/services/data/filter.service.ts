@@ -30,7 +30,7 @@ export class FilterService {
       for (const i in parameter) {
         let item: any = [...blankArray];
         item = item.filter(f => {
-          return f[`${i}`] === parameter[i];
+          return f[`${i}`].toLowerCase().includes(parameter[i].toLowerCase());
         });
         blankArray = item;
       }

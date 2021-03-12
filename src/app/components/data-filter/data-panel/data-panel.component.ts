@@ -79,5 +79,13 @@ export class DataPanelComponent implements OnInit {
     }
   }
 
+  search(): void {
+    if (this.Form.get('name').value) {
+      this.searchClothes();
+    } else {
+      this.getAllClothes();
+    }
+  }
+
   // tslint:disable-next-line:typedef
 }
