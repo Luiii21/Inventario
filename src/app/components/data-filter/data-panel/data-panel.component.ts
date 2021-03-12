@@ -49,10 +49,14 @@ export class DataPanelComponent implements OnInit {
         delete newForm[i];
       }
     }
-    this.filterService.filterItems(newForm).subscribe(clothes => {
-      this.Clothes = clothes;
-      this.clothesList.emit({data: clothes, status: 'Loaded'});
-    });
+
+    if (newForm.value) {
+      this.filterService.filterItems(newForm).subscribe(clothes => {
+        this.Clothes = clothes;
+        this.clothesList.emit({data: clothes, status: 'Loaded'});
+      });
+    }
+    this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
   }
 
   // tslint:disable-next-line:typedef
