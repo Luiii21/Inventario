@@ -55,7 +55,6 @@ export class DataPanelComponent implements OnInit {
         this.clothesList.emit({data: [], status: 'error'});
       }
     });
-    this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
   }
 
   // tslint:disable-next-line:typedef
