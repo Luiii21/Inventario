@@ -40,7 +40,6 @@ export class DataPanelComponent implements OnInit {
   }
 
   searchClothes(): void {
-    this.clothesList.emit({data: [], status: 'Loading'});
     const newForm = {...this.Form.value};
     for (const i in newForm) {
       if (!newForm[i]) {
@@ -49,9 +48,12 @@ export class DataPanelComponent implements OnInit {
       }
     }
 
-    this.filterService.filterItems(newForm).subscribe(clothes => {
-      this.Clothes = clothes;
-      this.clothesList.emit({data: clothes, status: 'Loaded'});
+    this.filterService.filterItems(newForm).subscribe((clothes: any) => {
+      if (clothes !== null) {
+        this.clothesList.emit({data: clothes, status: 'Loaded'});
+      } else {
+        this.clothesList.emit({data: [], status: 'error'});
+      }
     });
     this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
   }
@@ -77,5 +79,6 @@ export class DataPanelComponent implements OnInit {
       this.clothesList.emit({data: this.Clothes, status: 'Loaded'});
     }
   }
+
   // tslint:disable-next-line:typedef
 }

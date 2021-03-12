@@ -23,12 +23,22 @@ export class FilterService {
 
   filterItems(parameter: any): Observable<any> {
     return this.getItems().pipe((map((data: any) => {
-      return data.filter(x => {
-        // tslint:disable-next-line:forin
-        for (const i in parameter) {
-          return x[`${i}`].includes(parameter[i]);
-        }
-      });
+
+      let blankArray: any[] = [...data];
+
+      // tslint:disable-next-line:forin
+      for (const i in parameter) {
+        let item: any = [...blankArray];
+        item = item.filter(f => {
+          return f[`${i}`] === parameter[i];
+        });
+        blankArray = item;
+      }
+      if (blankArray.length > 0) {
+        return blankArray;
+      } else {
+        return null;
+      }
     })));
   }
 
