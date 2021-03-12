@@ -3,8 +3,7 @@
 
 .inventory-forms {
   .form-control {
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
+    border-radius: 15px;
     border-right: 1px solid $primary-color;
     font-size: 12px;
     min-height: 36px;
@@ -42,6 +41,7 @@
 
 .card {
   border-radius: 25px;
+
   &.filter-panel {
     width: 100%;
 
@@ -53,6 +53,7 @@
 
   &.item-card {
     margin-bottom: 15px;
+
     img {
       border-top-left-radius: 25px;
       border-top-right-radius: 25px;

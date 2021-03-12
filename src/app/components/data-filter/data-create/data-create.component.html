@@ -1,1 +1,72 @@
-<p>data-create works!</p>
+<div class="row no-gutters h-100">
+  <div class="col-12 col-lg-8 col-xl-6 card p-3 m-auto shadow-sm">
+    <h2 class="text-primary-app mb-4">Registro de productos:</h2>
+    <form autocomplete="off" [formGroup]="Form" (submit)="saveProduct()" class="row">
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Nombre de producto:</h6>
+        <input type="text" formControlName="name" class="form-control border rounded-pill border-dark w-100"
+               placeholder="Nombre de producto"
+               aria-label="Buscar"
+               formControlName="name"
+               aria-describedby="basic-addon2">
+      </div>
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Marca:</h6>
+        <input formControlName="trademark" type="text" class="form-control border rounded-pill border-dark w-100"
+               placeholder="Marca de producto"
+               aria-label="Buscar"
+               aria-describedby="basic-addon2">
+      </div>
+      <div class="col-12 mb-3">
+        <h6 class="text-primary-app">Genero:</h6>
+        <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+          <label class="btn btn-primary-app">
+            <input formControlName="gender" type="radio" name="gender" id="option1" value="hombre">
+            <i class="fa fa-male mr-2"></i>
+            <span>Hombre</span>
+          </label>
+          <label class="btn btn-primary-app">
+            <input formControlName="gender" type="radio" name="gender" id="option2" value="mujer">
+            <i class="fa fa-female mr-2"></i>
+            <span>Mujer</span>
+          </label>
+        </div>
+      </div>
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Tipo:</h6>
+        <select formControlName="type" class="custom-select border-dark w-100 border rounded-pill">
+          <option value="abrigo">Abrigo</option>
+          <option value="pantalones">Pantalones</option>
+          <option value="zapatos">Zapatos</option>
+        </select>
+      </div>
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Precio:</h6>
+        <input formControlName="price" type="number" min="0" class="form-control border rounded-pill border-dark w-100"
+               placeholder="Precio de producto:"
+               aria-label="Buscar"
+               aria-describedby="basic-addon2">
+      </div>
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Tamaño:</h6>
+        <input formControlName="size" type="text" class="form-control border rounded-pill border-dark w-100"
+               placeholder="Talla de producto"
+               aria-label="Buscar"
+               aria-describedby="basic-addon2">
+      </div>
+      <div class="inventory-forms input-group mb-3 col-12 col-lg-6">
+        <h6 class="text-primary-app">Color:</h6>
+        <select formControlName="color" class="custom-select border-dark w-100 border rounded-pill">
+          <option value="rojo">Rojo</option>
+          <option value="azul">Azul</option>
+          <option value="verde">Verde</option>
+        </select>
+      </div>
+
+      <button class="btn btn-block btn-primary-app mx-3 mt-3" type="submit">
+        <small>GUARDAR PRODUCTO</small>
+      </button>
+    </form>
+  </div>
+
+</div>

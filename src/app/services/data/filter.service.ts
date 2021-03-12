@@ -8,14 +8,18 @@ import {map} from 'rxjs/operators';
 })
 export class FilterService {
   private testObj: any;
+  private url = `https://inventarioapp-2f2a2-default-rtdb.firebaseio.com/products.json`;
 
   constructor(private http: HttpClient) {
   }
 
+
   getItems(): Observable<any> {
-    const url = `https://inventarioapp-2f2a2-default-rtdb.firebaseio.com/products.json`;
-    return this.http.get(url);
+    return this.http.get(`${this.url}`).pipe(
+      map(this.createArray)
+    );
   }
+
 
   filterItems(parameter: any): Observable<any> {
     return this.getItems().pipe((map((data: any) => {
@@ -26,5 +30,26 @@ export class FilterService {
         }
       });
     })));
+  }
+
+  // tslint:disable-next-line:typedef
+  registerItem(product: any) {
+    return this.http.post(`${this.url}`, product);
+  }
+
+
+  // tslint:disable-next-line:typedef
+  private createArray(productsResp: object) {
+    const products: any[] = [];
+    Object.keys(productsResp).forEach(k => {
+      const product: any = productsResp[k];
+      products.push(product);
+    });
+
+    if (productsResp === null) {
+      return [];
+    }
+
+    return products;
   }
 }
